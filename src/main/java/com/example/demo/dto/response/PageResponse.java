@@ -59,4 +59,13 @@ public class PageResponse<T> {
     public void setTotalPages(int totalPages) {
         this.totalPages = totalPages;
     }
+
+    public static <T> PageResponse<T> from(org.springframework.data.domain.Page<T> page) {
+        return new PageResponse<>(
+                page.getContent(),
+                page.getNumber(),
+                page.getSize(),
+                page.getTotalElements(),
+                page.getTotalPages());
+    }
 }
